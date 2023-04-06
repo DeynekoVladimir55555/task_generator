@@ -23,7 +23,7 @@ def training():
         task = GenerationFile.print_question(difficulty, types)
         task_id = DataBaseFile.insert_task(task[0], task[1])
 
-        print(task)
+        # print(task)
 
         return render_template('training.html', question=task[0], task_id=task_id)
     elif request.method == 'POST':
