@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  {% if result == 'success' %}
+  <h1>Вы успешно ответили, поздравляем!</h1>
+  <p></p>
+  <img src="/static/img/success.jpg" alt="Well done!" class="image-center" />
+  {% else %}
+  <h1>Вы неправильно ответили и сможете попробовать ещё раз ;)</h1>
+  <p></p>
+  <img src="/static/img/wrong.jpg" alt="Try one more time!" class="image-center" />
+  {% endif %}
+  <p></p>
+  <a href="/training" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Продолжить</a>
+  <a href="/stats" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Перейти к статитстике</a>
+  <a href="/" class="btn btn-outline-secondary btn-lg active" role="button" aria-pressed="true">Завершить тренировку</a>
+{% endblock %}

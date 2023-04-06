@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Тренировка</h1>
+  <p>{{ question|safe }}</p>
+	<form method="post">
+		<div class="form-group">
+			<label>Введите Ваш ответ:</label>
+			<input type="text"
+				 class="form-control"
+				 id="answer"
+				 placeholder="ответ"
+				 name="answer" />
+			<p></p>
+		</div>
+		<button type="submit" class="btn btn-primary" name="action" value="check">Проверить</button>
+		<button type="submit" class="btn btn-secondary" name="action" value="skip">Пропустить</button>
+
+		<input type="hidden" id="task_id" name="task_id" value="{{ task_id }}">
+  </form>
+{% endblock %}

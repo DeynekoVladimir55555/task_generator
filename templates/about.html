@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>О проекте и авторе</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="fw-bold">Название проекта</td>
+        <td>Онлайн генератор задач на системы счисления</td>
+      </tr>
+      <tr>
+        <td class="fw-bold">Описание проекта</td>
+        <td>Данный проект генерирует различные задачи на системы счисления и автоматически проверяет ответ пользователя</td>
+      </tr>
+      <tr>
+        <td class="fw-bold">Автор</td>
+        <td>Дейнеко Владимир</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="question">Использованные технологии:</p>
+  <ul>
+    <li><a href="https://pypi.org/project/Flask/">Flask</a></li>
+    <li><a href="https://getbootstrap.com/">Bootstrap</a></li>
+    <li><a href="https://jquery.com/">jQuery</a></li>
+    <li><a href="https://www.chartjs.org/">chart.js</a></li>
+    <li><a href="https://sqlite.org/index.html">Sqlite</a></li>
+  </ul>
+{% endblock %}

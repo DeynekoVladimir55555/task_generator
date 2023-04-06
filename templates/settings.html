@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Настройки генератора</h1>
+	<form method="post">
+		<div class="form-group">
+			<label for="difficulty">Сложность</label>
+			<select class="form-control" id="difficulty" name="difficulty">
+				<option {% if difficulty == 'Легко' %}selected="selected"{% endif %}>Легко</option>
+				<option {% if difficulty == 'Нормально' %}selected="selected"{% endif %}>Нормально</option>
+				<option {% if difficulty == 'Сложно' %}selected="selected"{% endif %}>Сложно</option>
+			</select>
+		</div>
+		<p></p>
+		<div class="form-group form-check">
+			<input type="checkbox"
+						 class="form-check-input"
+						 id="blocking_item"
+			       data-toggle='tooltip'
+			       data-placement="top"
+						 title="Внимание: должен быть выбран хотя бы один тип генерируемых задач">
+			<label class="form-check-label"
+						 for="blocking_item"
+			       data-toggle='tooltip'
+			       data-placement="top"
+						 title="Внимание: должен быть выбран хотя бы один тип генерируемых задач">Выбор типов генерируемых задач</label>
+		</div>
+		<div class="form-group form-check">
+			<input type="checkbox"
+						 class="form-check-input ms-2 dynamic_blocking"
+						 id="type_1" name="type_1"
+						 {% if types[0] == 'on' %}checked{% endif %}>
+			<label class="form-check-label ms-1" for="type_1">Перевод из одной системы счисления в другую</label>
+		</div>
+		<div class="form-group form-check">
+			<input type="checkbox"
+						 class="form-check-input ms-2 dynamic_blocking"
+						 id="type_2" name="type_2"
+						 {% if types[1] == 'on' %}checked{% endif %}>
+			<label class="form-check-label ms-1" for="type_2">Операции с числами в различных системах счисления</label>
+		</div>
+		<p></p>
+		<button type="submit" class="btn btn-primary">Сохранить</button>
+	</form>
+{% endblock %}

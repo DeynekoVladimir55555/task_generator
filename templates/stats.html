@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% set total_tasks = success_total + fail_total + skip_total %}
+
+{% block content %}
+  <h1>Статистика использования генератора задач</h1>
+  {% if total_tasks == 0 %}
+  <p class="question">К сожалению, Вы ещё не попробовали решить ни одной задачи. Приступить к решению задач можно по этой <a href="/training">ссылке</a>.</p>
+  {% else %}
+    {% set percent = 100 / total_tasks %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Кол-во задач</th>
+          <th scope="col">% от общего числа</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="fw-bold">Решено верно</td>
+          <td>{{ success_total }}</td>
+          <td>{{ "%.2f"|format(percent * success_total) }}</td>
+        </tr>
+        <tr>
+          <td class="fw-bold">Решено неверно</td>
+          <td>{{ fail_total }}</td>
+          <td>{{ "%.2f"|format(percent * fail_total) }}</td>
+        </tr>
+        <tr>
+          <td class="fw-bold">Пропущено</td>
+          <td>{{ skip_total }}</td>
+          <td>{{ "%.2f"|format(percent * skip_total) }}</td>
+        </tr>
+        <tr>
+          <td class="details">Всего сгенерировано</td>
+          <td class="details">{{ total_tasks }}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <input type="hidden" id="success_total" value="{{ success_total }}">
+      <input type="hidden" id="fail_total" value="{{ fail_total }}">
+      <input type="hidden" id="skip_total" value="{{ skip_total }}">
+    </div>
+    <div>
+      <canvas id="stats_chart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/static/js/stats_chart.js"></script>
+    <form method="post">
+		<div class="form-group">
+			<label for="mode">Выберите режим очистки</label>
+			<select class="form-control" id="mode" name="mode">
+				<option value="clear_all">Очистить все задачи</option>
+				<option value="clear_skipped_only" selected="selected">Очистить только пропущенные задачи</option>
+			</select>
+		</div>
+		<p></p>
+		<button type="submit" class="btn btn-primary">Очистить статистикку</button>
+	</form>
+  {% endif %}
+{% endblock %}
